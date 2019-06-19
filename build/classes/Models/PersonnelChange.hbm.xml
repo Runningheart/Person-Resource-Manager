@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="Models.PersonnelChange">
+	
+		<id name="id" type="int">
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="activity" type="string"></property>
+		<property name="dateTime" type="java.sql.Date"></property>
+		
+		<many-to-one name="oldJob" class="Models.Job" column="oldJob"></many-to-one>
+		<many-to-one name="nowJob" class="Models.Job" column="nowJob"></many-to-one>
+		<many-to-one name="staff_id" class="Models.Staff" column="staff_id"></many-to-one>
+	
+	</class>
+</hibernate-mapping>

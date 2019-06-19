@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="Models.Job" >
+		
+		<id name="id" type="int">
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="name" type="string"></property>
+		<property name="salary" type="float"></property>
+		
+		<set name="staff_id" inverse="true" lazy="false">
+			<key column="job_id"></key>
+			<one-to-many class="Models.Staff"/>
+		</set>
+		<set name="oldJob" inverse="true" lazy="false">
+			<key column="oldJob"></key>
+			<one-to-many class="Models.PersonnelChange"/>
+		</set>
+		<set name="nowJob" inverse="true" lazy="false">
+			<key column="nowJob"></key>
+			<one-to-many class="Models.PersonnelChange"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>

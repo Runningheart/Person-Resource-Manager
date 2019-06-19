@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="Models.Staff">
+	
+		<id name="id" type="int">
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="name" type="string"></property>
+		<property name="num" type="string"></property>
+		<property name="health" type="string"></property>
+		<property name="political" type="string"></property>
+		<property name="birthday" type="java.sql.Date"></property>
+		<property name="isOnline" type="string"></property>
+		
+		<many-to-one name="job_id" class="Models.Job" column="job_id"></many-to-one>
+		<many-to-one name="dep_id" class="Models.Department" column="dep_id"></many-to-one>
+		
+		<set name="attendance" inverse="true" lazy="false" cascade="all">
+			<key column="staff_id"></key>
+			<one-to-many class="Models.Attendance"/>
+		</set>
+		
+		<set name="personnelChange" inverse="true" lazy="false" cascade="all"> 
+			<key column="staff_id"></key>
+			<one-to-many class="Models.PersonnelChange"/>
+		</set>
+		
+		<set name="checkList" inverse="true" lazy="false"  cascade="all"> 
+			<key column="staff_id"></key>
+			<one-to-many class="Models.CheckList"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>

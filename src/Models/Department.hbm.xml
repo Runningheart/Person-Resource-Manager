@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="Models.Department">
+	
+		<id name="id" type="int">
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="name" type="string"></property>
+		<property name="managerName" type="string"></property>
+		
+		<set name="staff_id" inverse="true" lazy="false">
+			<key column="dep_id"></key>
+			<one-to-many class="Models.Staff"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>
